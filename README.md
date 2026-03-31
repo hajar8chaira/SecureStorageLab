@@ -32,7 +32,7 @@ Chaque mecanisme a ses **avantages, limites et risques de securite** que ce LAB 
 
 ### Etape 1 - Creation du Projet
 
-<p align="center"> <img src="images/1.png" width="500"> </p>
+<p align="center"> <img src="images/1.png" width="800"> </p>
 
 Configuration utilisee :
 - **Name :** `SecureStorageLabJava`
@@ -50,7 +50,7 @@ dependencies {
 }
 ```
 
-<p align="center"> <img src="images/2.png" width="500"> </p>
+<p align="center"> <img src="images/2.png" width="800"> </p>
 
 ### Etape 3 - Synchroniser et Lancer
 
@@ -129,7 +129,7 @@ D/TEST    com.example.securestoragelabjava    name=Hajar, lang=fr, theme=dark
 - Les trois valeurs (nom, langue, theme) sont ecrites dans le fichier `user_prefs.xml` en mode `MODE_PRIVATE`
 - L'ecriture utilise `apply()` (asynchrone) -- aucun blocage du thread UI
 
-<p align="center"> <img src="images/4.png" width="600"> </p>
+<p align="center"> <img src="images/4.png" width="800"> </p>
 
 > ** Logcat apres sauvegarde des preferences : tag TEST avec name=Hajar, lang=fr, theme=dark**
 
@@ -155,7 +155,7 @@ D/SECURE    com.example.securestoragelabjava    tokenLength=6
 
 > **Point de securite critique :** La valeur du token (`"abc123"`) **n'apparait JAMAIS** dans Logcat. C'est une regle fondamentale -- on ne logue jamais une donnee sensible en clair.
 
-<p align="center"> <img src="images/5.png" width="600"> </p>
+<p align="center"> <img src="images/5.png" width="800"> </p>
 
 > **Logcat apres sauvegarde du token : tag SECURE avec tokenLength=6 (valeur jamais exposee)**
 
@@ -182,7 +182,7 @@ D/SECURE    com.example.securestoragelabjava    tokenLength=6
   - Theme : dark
   - Token : [longueur = 6]
 
-<p align="center"> <img src="images/6.png" width="600"> </p>
+<p align="center"> <img src="images/6.png" width="800"> </p>
 
 > **Logcat apres chargement : les donnees TEST et SECURE sont correctement restaurees**
 
@@ -301,11 +301,6 @@ D/MAIN    com.example.securestoragelabjava    Nettoyage complet effectue
 
 > **Regle respectee :** Aucune donnee sensible n'est jamais loguee en clair. Le token est toujours represente par sa longueur.
 
----
-
-## Verifications a Faire
-
-Ces verifications constituent les **criteres d'acceptance** du LAB 14. Chaque etape doit etre validee pour confirmer le bon fonctionnement de l'application.
 
 ---
 
@@ -324,7 +319,7 @@ Ces verifications constituent les **criteres d'acceptance** du LAB 14. Chaque et
 - Si tu avais choisi `dark`, le switch est toujours coche
 - Le `TextView` affiche les bonnes valeurs
 
-<p align="center"> <img src="images/4.png" width="600"> </p>
+<p align="center"> <img src="images/4.png" width="800"> </p>
 
 > **Log TEST confirmant la sauvegarde : name=Hajar, lang=fr, theme=dark**
 
@@ -342,7 +337,7 @@ Ces verifications constituent les **criteres d'acceptance** du LAB 14. Chaque et
 - `tokenLength > 0` dans ton `TextView` (ou Logcat)
 - Le token **n'apparait jamais en clair** dans Logcat (uniquement sa longueur)
 
-<p align="center"> <img src="images/5.png" width="600"> </p>
+<p align="center"> <img src="images/13.png" width="600"> </p>
 
 > ** Log SECURE montrant tokenLength=6 -- la valeur du token n'est JAMAIS affichee**
 
@@ -351,7 +346,7 @@ Ces verifications constituent les **criteres d'acceptance** du LAB 14. Chaque et
 - Filtre avec `package:mine`
 - Cherche le mot `abc123` -> **il ne doit apparaitre nulle part**
 
-<p align="center"> <img src="images/6.png" width="600"> </p>
+<p align="center"> <img src="images/6.png" width="800"> </p>
 
 > **Logcat filtre package:mine : seuls TEST et SECURE apparaissent, aucune donnee sensible exposee**
 
@@ -377,29 +372,27 @@ View > Tool Windows > Device File Explorer
    - Contenu de `note.txt`
    - Liste des etudiants avec `id`, `name`, `age`
 
-<p align="center"> <img src="images/7.png" width="600"> </p>
+<p align="center"> <img src="images/7.png" width="800"> </p>
 
 > ** Device File Explorer : acces au dossier files/ de l'application**
 
-<p align="center"> <img src="images/8.png" width="600"> </p>
+<p align="center"> <img src="images/8.png" width="800"> </p>
 
 > **Contenu du fichier note.txt visible dans Device File Explorer**
 
-<p align="center"> <img src="images/9.png" width="600"> </p>
+<p align="center"> <img src="images/9.png" width="800"> </p>
 
 > **Contenu du fichier students.json avec la liste des etudiants au format JSON**
 
-<p align="center"> <img src="images/10.png" width="600"> </p>
+<p align="center"> <img src="images/15.png" width="800"> </p>
 
 > **Affichage du contenu JSON dans le TextView de l'application**
 
-<p align="center"> <img src="images/11.png" width="600"> </p>
+<p align="center"> <img src="images/16.png" width="800"> </p>
 
 > **Log STUDENTS confirmant la lecture des donnees : id, name, age pour chaque etudiant**
 
-<p align="center"> <img src="images/12.png" width="600"> </p>
 
-> **Vue complete Device File Explorer montrant les fichiers crees par l'application**
 
 ---
 
@@ -415,7 +408,8 @@ View > Tool Windows > Device File Explorer
 3. Clique sur **"Charger prefs"** -> tous les champs doivent etre **vides**
 4. Verifie dans Device File Explorer -> les fichiers `note.txt` et `students.json` sont **supprimes**
 
-**Aucune donnee residuelle ne doit subsister.**
+<p align="center"> <img src="images/17.png" width="500"> </p>
+
 
 ---
 
