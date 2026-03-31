@@ -161,37 +161,10 @@ D/SECURE    com.example.securestoragelabjava    tokenLength=6
 
 ---
 
-### Etape 3 - Chargement des Preferences et du Token
-
-**Action effectuee :**
-1. Fermer et relancer l'application (ou cliquer sur **"Charger prefs"**)
-
-**Logs Logcat produits :**
-
-```
-D/TEST      com.example.securestoragelabjava    name=Hajar, lang=fr, theme=dark
-D/SECURE    com.example.securestoragelabjava    tokenLength=6
-```
-
-**Explication :**
-- Les preferences ont ete **restaurees** depuis `SharedPreferences` -> les donnees persistent entre les redemarrages
-- Le token a ete **dechiffre** depuis `EncryptedSharedPreferences` -> sa longueur confirme qu'il est bien present
-- Le `TextView` de l'interface affiche les valeurs recuperees :
-  - Nom : Hajar
-  - Langue : fr
-  - Theme : dark
-  - Token : [longueur = 6]
+### Etape 3 - Creation des Fichiers Internes (note.txt + students.json)
 
 <p align="center"> <img src="images/6.png" width="800"> </p>
-
-> **Logcat apres chargement : les donnees TEST et SECURE sont correctement restaurees**
-
----
-
-### Etape 4 - Creation des Fichiers Internes (note.txt + students.json)
-
-**Action effectuee :**
-1. Cliquer sur **"Sauvegarder fichier JSON"**
+<p align="center"> <img src="images/7.png" width="800"> </p>
 
 **Logs Logcat produits :**
 
@@ -210,46 +183,7 @@ D/STUDENTS   com.example.securestoragelabjava    id=3, name=Bob, age=21
 
 ---
 
-### Etape 5 - Lecture des Fichiers Internes
-
-**Action effectuee :**
-1. Cliquer sur **"Charger fichier JSON"**
-
-**Logs Logcat produits :**
-
-```
-D/FILES      com.example.securestoragelabjava    Reading note.txt...
-D/FILES      com.example.securestoragelabjava    note.txt content: Hello MLIAEdu!
-D/STUDENTS   com.example.securestoragelabjava    Loading students.json...
-D/STUDENTS   com.example.securestoragelabjava    id=1, name=Hajar, age=20
-D/STUDENTS   com.example.securestoragelabjava    id=2, name=Alice, age=22
-D/STUDENTS   com.example.securestoragelabjava    id=3, name=Bob, age=21
-```
-
-**Le `TextView` affiche :**
-- Contenu de `note.txt` : `Hello MLIAEdu!`
-- Liste des etudiants avec `id`, `name`, `age`
-
----
-
-### Etape 6 - Ecriture dans le Cache
-
-**Action effectuee :**
-1. Cliquer sur **"Cache"**
-
-**Log Logcat produit :**
-
-```
-D/CACHE    com.example.securestoragelabjava    Cache ecrit a 1711921234567
-```
-
-**Explication :**
-- Le fichier `ui_cache.txt` est cree dans `/data/data/<package>/cache/`
-- Le timestamp permet de verifier que le cache est bien rafraichi a chaque appel
-
----
-
-### Etape 7 - Stockage Externe App-Specific
+### Etape 4 - Stockage Externe App-Specific
 
 **Action effectuee :**
 1. Cliquer sur **"Externe"**
@@ -264,7 +198,8 @@ D/EXTERNAL    com.example.securestoragelabjava    Fichier externe ecrit avec suc
 - Le fichier est cree dans `/sdcard/Android/data/<package>/files/`
 - **Aucune permission requise** grace au scoped storage (Android 10+)
 - Ce fichier est automatiquement supprime lors de la desinstallation de l'app
-
+- 
+<p align="center"> <img src="images/11.png" width="800"> </p>
 ---
 
 ### Etape 8 - Nettoyage Complet
@@ -314,32 +249,12 @@ D/MAIN    com.example.securestoragelabjava    Nettoyage complet effectue
 5. **Redemarre l'app** (ou relance l'emulateur)
 6. Clique sur **"Charger prefs"**
 
-**Tu dois voir que :**
-- Le nom, la langue et le theme sont **restaures correctement**
-- Si tu avais choisi `dark`, le switch est toujours coche
-- Le `TextView` affiche les bonnes valeurs
 
 <p align="center"> <img src="images/4.png" width="800"> </p>
 
 > **Log TEST confirmant la sauvegarde : name=Hajar, lang=fr, theme=dark**
 
 ---
-
-### b) Token Chiffre - Securite du Stockage
-
-**Procedure :**
-1. Saisis un token (ex : `abc123`)
-2. Clique sur **"Sauvegarder prefs"**
-3. Redemarre l'app
-4. Clique sur **"Charger prefs"**
-
-**Tu dois voir :**
-- `tokenLength > 0` dans ton `TextView` (ou Logcat)
-- Le token **n'apparait jamais en clair** dans Logcat (uniquement sa longueur)
-
-<p align="center"> <img src="images/13.png" width="600"> </p>
-
-> ** Log SECURE montrant tokenLength=6 -- la valeur du token n'est JAMAIS affichee**
 
 **Verification supplementaire :**
 - Ouvre Logcat dans Android Studio
