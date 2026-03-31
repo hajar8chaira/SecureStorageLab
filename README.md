@@ -385,7 +385,7 @@ View > Tool Windows > Device File Explorer
 
 > **Contenu du fichier note.txt visible dans Device File Explorer**
 
-<p align="center"> <img src="images/z9.png" width="600"> </p>
+<p align="center"> <img src="images/9.png" width="600"> </p>
 
 > **Contenu du fichier students.json avec la liste des etudiants au format JSON**
 
